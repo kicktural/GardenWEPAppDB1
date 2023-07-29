@@ -1,0 +1,63 @@
+﻿@model Article
+
+
+<form method="post" enctype="multipart/form-data">
+     <div class="form-group">
+        <a href="~/Admin/Article" class="btn btn-outline-success"><i class="fa-solid fa-circle-arrow-left"></i> Article Back</a>
+     </div>
+    <div class="form-group">
+        <label asp-for="Title">Title</label>
+        <input type="text" asp-for="Title" class="btn btn-outline-primary form-control" placeholder="Enter Title.." value="" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Context">Context</label>
+        <textarea id="editor" asp-for="Context" class="form-control"> placeholder="Enter Context.."  </textarea>
+        <span asp-validation-for="Context" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="photo">Photo</label>
+        <input type="file" accept="image/*"  class="form-control"  name="photo" id="photo" value="" />
+        <span asp-validation-for="PhotoUrl" class="text-danger"></span>
+    </div>
+     <div class="form-group">
+        <input type="hidden" asp-for="PhotoUrl"  />
+        <input type="hidden" asp-for="UserId"  />
+        <input type="hidden" asp-for="CreateDate" />
+        <input type="hidden" asp-for="Id"  />
+     </div>
+    <div class="form-group">
+        <img src="@Model.PhotoUrl"  width="130" class="btn btn-dark" alt="" />
+    </div>
+    <div class="form-group">
+        <select asp-for="CategoryId" class="form-control" asp-items="@ViewBag.Categories"></select>
+    </div>
+    <div class="form-group">
+        <select  name="tagIdss" class="form-control"  multiple>
+            @foreach (var item in ViewData["Tags"] as List<Tag>)
+            {
+                if(Model.Articletag.Select(x => x.TagId).Contains(item.Id))
+                {      
+                    <option selected value="@item.Id">@item.TagName</option>
+                }
+                else
+                {
+                    <option value="@item.Id">@item.TagName</option>
+                }
+            }
+        </select>
+    </div>
+    <input type="submit" class="btn btn-light" value="Update" />
+</form>
+
+
+@section Scripts{
+    <script src="~/Admin/cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+
+    <script>
+        CKEDITOR.replace('editor');
+    </script>
+    }
+
+

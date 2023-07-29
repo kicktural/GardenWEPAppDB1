@@ -1,0 +1,12 @@
+﻿@model Tag
+
+<form method="post">
+    <a href="/Admin/tag" class="btn btn-outline-primary  m-1"> <i class="fa-solid fa-left-long"></i>   Back</a>
+    <a href="/Admin/Article" class="btn btn-outline-success  m-1"> <i class="fa-solid fa-left-long"></i>Article Back</a>
+    <div class="form-group">
+    <label asp-for="TagName"></label>
+        <input type="text" class="btn btn-success form-control w-100" placeholder="Enter Tag name..." asp-for="TagName" value="" />
+    <span asp-validation-for="TagName" class="text-danger"></span>
+    </div>
+    <input type="submit" class="btn btn-info was-validated" value="Create"/>  
+</form>

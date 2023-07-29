@@ -1,0 +1,48 @@
+﻿@model Article
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <a href="/Admin/article" class="btn btn-outline-info"> <i class="fa-solid fa-backward"></i>   Article Back</a>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input type="text"  asp-for="Title" placeholder="Enter Title..." class="form-control btn btn-White p-2" value="" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Context"></label>
+        <textarea  class="form-control btn btn-White" placeholder="Enter Context..." asp-for="Context"></textarea>
+        <span asp-validation-for="Context" class="text text-danger"></span> 
+    </div>
+
+    <div class="form-group">
+        <label for="Photo">Photo</label>
+        <input type="file" accept="image/*" name="Photo" class="form-control" id="Photo" />
+        <span asp-validation-for="PhotoUrl" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">     
+        <select asp-for="CategoryId" class="form-control" asp-items="@ViewBag.Categories"></select>
+    </div>
+
+    <div class="form-group">  
+        <select name="tagIds" multiple class="form-control">
+            @foreach (var item in ViewData["Tags"] as List<Tag>)
+            {
+                <option value="@item.Id">@item.TagName</option>
+            }
+        </select>
+    </div>
+    <input type="submit" class="btn btn-success w-100" value="Submit" />
+</form>
+
+@*
+    @section Scripts{
+    <script src="~/Admin/cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+
+    <script>
+        CKEDITOR.replace('editor');
+    </script>     
+    }*@

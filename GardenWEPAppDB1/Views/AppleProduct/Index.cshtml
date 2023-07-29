@@ -1,0 +1,167 @@
+﻿@model HomeVMApple
+@{
+    int count = 1;
+}
+<section class="section first-section">
+    <div class="container-fluid">
+        <div class="masonry-blog clearfix">
+
+            @foreach (var item in Model.Apple.Take(3))
+            {
+                <div class="center-side">
+
+                    <div class="masonry-box post-media">
+                        <img src="@item.PhotoUrl" href="/AppleProduct/detail//@item.Id" alt="" class="img-fluid">
+                        <div class="shadoweffect">
+                            <div class="shadow-desc">
+                                <div class="blog-meta">
+                                    <span class="bg-aqua"><a href="/AppleProduct/detail/@item.Id" title="">@item.Category.CategoryName</a></span>
+                                    <h4><a href="/AppleProduct/detail/@item.Id" title="">@item.Title</a></h4>
+                                    <small><a href="/AppleProduct/detail/@item.Id" title="@item.Id">@item.CreateDate.ToString("dddd, dd MMMM. yyyy ")</a></small>
+                                    <small><a href="/AppleProduct/detail/@item.Id" title="">By @item.User.FistName</a></small>
+                                </div><!-- end meta -->
+                            </div><!-- end shadow-desc -->
+                        </div><!-- end shadow -->
+                    </div><!-- end post-media -->
+                </div>
+
+                <!-- end left-side -->
+            }
+
+
+
+            <!-- end right-side -->
+        </div><!-- end masonry -->
+    </div>
+</section>
+
+<section class="section wb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                @foreach (var item in Model.FirstSlotApple.Skip(3).Take(5))
+                {
+                    count++;
+                    <div class="page-wrapper">
+                        <div class="blog-list clearfix">
+
+                            <div class="blog-box row">
+                                <div class="col-md-4">
+                                    <div class="post-media">
+                                        <a href="garden-single.html" title="">
+                                            <a href="/AppleProduct/detail/@item.Id"><img src="@item.PhotoUrl" alt="" class="img-fluid"></a>
+                                            <div class="hovereffect"></div>
+                                        </a>
+                                    </div><!-- end media -->
+                                </div><!-- end col -->
+
+                                <div class="blog-meta big-meta col-md-8">
+                                    <span class="bg-aqua"><a href="garden-category.html" title="">Product name</a></span>
+                                    <h4><a href="/AppleProduct/detail/@item.Id" title="">@item.Title</a></h4>
+                                    <a href="/AppleProduct/detail/@item.Id">Click for detailed information! / </a>
+                                    <a href="/AppleProduct/detail/@item.Id">ViewCount</a>
+                                    <small>
+                                        <a href="/AppleProduct/detail/@item.Id"></a> <br>
+                                        <i class="fa fa-eye"></i>@item.ViewCount
+                                    </small>
+                                    <small><a href="/AppleProduct/detail/@item.Id" title="@item.Id">@item.CreateDate.ToString("dddd, dd MMMM yyyy")</a></small>
+                                    <small><a href="/AppleProduct/detail/@item.Id" title="@item.Id">created by @item.User.FistName</a></small>
+                                </div><!-- end meta -->
+
+                            </div><!-- end blog-box -->
+
+                            <hr class="invis">
+                            @*
+                        @if (count % 3 == 1)
+                        {
+                        <div class="row">
+                        <div class="col-lg-10 offset-lg-1">
+                        <div class="banner-spot clearfix">
+                        <div class="banner-img">
+                        <img src="@Model.FirstSlot[0].PhotoUrl" alt="" class="img-fluid">
+                        </div><!-- end banner-img -->
+                        </div><!-- end banner -->
+                        </div><!-- end col -->
+                        </div>
+
+                        <!-- end row -->
+                        }             *@
+
+                        </div><!-- end blog-list -->
+                    </div>
+
+                    <!-- end page-wrapper -->
+                }
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-start">
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end col -->
+
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                <div class="sidebar">
+                    <div class="widget">
+                        <h2 class="widget-title">Search</h2>
+                        <form class="form-inline search-form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search on the site">
+                            </div>
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div><!-- end widget -->
+                    <!-- end widget -->
+@*
+                    <div class="widget">
+                        <h2 class="widget-title">Most liked Product</h2>
+                        @foreach (var item in Model.PopularProduct.Take(2))
+                        {
+                            <div class="banner-spot clearfix">
+                                <div class="banner-img">
+                                    <a href="/AppleProduct/detail//@item.Id"><img src="@item.PhotoUrl" href="/AppleProduct/detail//@item.Id" alt="" class="img-fluid"></a>
+                                    <p class="m-6"><a href="/AppleProduct/detail//@item.Id">Go to/@item.Title</a></p>
+                                    <p class="mt-6 mb-3"><a href="/AppleProduct/detail//@item.Id" title="@item.Id">@item.CreateDate.ToString("dddd, dd MMMM yyyy")</a></p>
+                                </div><!-- end banner-img -->
+                            </div>
+
+                            <!-- end banner -->
+                        }
+                    </div><!-- end widget -->*@
+
+                    <div class="widget">
+                        <h2 class="widget-title">Final product list</h2>
+                        <div class="instagram-wrapper clearfix">
+                            @foreach (var item in Model.FirstSlotApple.Skip(8))
+                            {
+                                <a href="/AppleProduct/detail//@item.Id"><img src="@item.PhotoUrl" alt="" class="img-fluid"></a>
+                            }
+
+                        </div><!-- end Instagram wrapper -->
+                    </div><!-- end widget -->
+
+                    <div class="widget">
+                        <h2 class="widget-title">Popular Categories</h2>
+                        <div class="link-widget">
+                            <ul>
+
+                                <li><a href="#">World vide <span>(10)</span></a></li>
+                                <li><a href="#">Indoor Living <span>(31)</span></a></li>
+                                <li><a href="#">Shopping Guides <span>(22)</span></a></li>
+                                <li><a href="#">Pool Design <span>(7)</span></a></li>
+                            </ul>
+                        </div><!-- end link-widget -->
+                    </div><!-- end widget -->
+                </div><!-- end sidebar -->
+            </div><!-- end col -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section>

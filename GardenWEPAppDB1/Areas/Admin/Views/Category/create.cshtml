@@ -1,0 +1,21 @@
+﻿@model Category
+
+
+@{
+    if (ViewBag.Error != null)
+    {
+        <p class="alert alert-danger">@ViewBag.Error</p>
+    }
+}
+
+<form method="post">
+    <a href="/Admin/category" class="btn btn-outline-warning  m-1"> <i class="fa-solid fa-left-long"></i>  Back</a>
+    <a href="/Admin/Article" class="btn btn-outline-success  m-1"> <i class="fa-solid fa-left-long"></i> Article  Back</a>
+    <div class="form-group">
+        <label asp-for="CategoryName"></label>
+        <input type="text" class="btn btn-success form-control w-100" placeholder="Enter Category Name..." asp-for="CategoryName" value="" />
+        <span asp-validation-for="CategoryName"></span>
+    </div>
+    <input type="submit" class="btn btn-info was-validated" value="Create" />
+
+</form>
